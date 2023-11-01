@@ -13,9 +13,7 @@ RUN echo ${PYTHON_VERSION}
 RUN apt-get update \
     && apt-get install -y htop \
     make \
-    git \
-    && apt-get autoremove \
-    && rm -rf /var/lib/apt/lists/*
+    git
 
 RUN python -m pip install Flask
 

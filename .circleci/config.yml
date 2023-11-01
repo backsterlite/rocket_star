@@ -15,21 +15,21 @@ jobs:
             # Тут можна додати додаткові команди, наприклад:
             ./main.sh
 
-  build1:
+  test:
     docker:
       - image: circleci/python:3.7
     steps:
       - checkout
       - run:
-          name: Run my script
+          name: This is unit tests
           command: |
-            echo "This is my simple build 1!"
+            echo "This is my unit tests"
 
 workflows:
   app_build_and_test:
     jobs:
       - build
-      - build1:
+      - test:
           filters:
             branches:
               only: master
