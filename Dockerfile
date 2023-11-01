@@ -1,12 +1,15 @@
-FROM python:3.10.13
+ARG PYTHON_VERSION
+# ENV PYTHON_VERSION=${PYTHON_VERSION}
+FROM python:${PYTHON_VERSION}
 
 
 ENV PIP_ROOT_USER_ACTION=ignore
 
-ARG user_login
+ARG USER_LOGIN
 
-ENV USER_LOGIN=${user_login}
+ENV USER_LOGIN=${USER_LOGIN}
 
+RUN echo ${PYTHON_VERSION}
 RUN apt-get update \
     && apt-get install -y htop \
     make \

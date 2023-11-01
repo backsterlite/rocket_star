@@ -4,7 +4,8 @@ echo "Start build docker image"
 docker build \
         -t "rocket-star:$(git rev-parse HEAD)" \
         -t "rocket-star:latest" \
-        --build-arg user_login="backster"  .
+        --build-arg USER_LOGIN="backster" \
+        --build-arg PYTHON_VERSION="3.10.13" .
 
 echo "Docker image builded"
 docker images
@@ -14,9 +15,12 @@ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 echo "Start pushing image"
 
-docker push "rocket-star:latest"
-docker push "rocket-star:$(git rev-parse HEAD)"
+docker push "rocket-star:latest" \
+&& docker push "rocket-star:$(git rev-parse HEAD)" \
+&& echo "Image pushed. OK" || echo "Images not pushed"; exit 1
 
-echo "Image pushed. OK"
+
+# curl -s "https://hub.docker.com/v2/repositories/backster/rocket-star/latest/" | jq '.results[] | .name + ": " + (.full_size|tostring) + " bytes"'
+
 
 
