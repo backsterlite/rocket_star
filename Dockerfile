@@ -10,10 +10,10 @@ ARG USER_LOGIN
 ENV USER_LOGIN=${USER_LOGIN}
 
 RUN echo ${PYTHON_VERSION}
-RUN apt-get update \
-    && apt-get install -y htop \
-    make \
-    git
+# RUN apt-get update \
+#     && apt-get install -y htop \
+#     make \
+#     git
 
 RUN python -m pip install Flask
 
