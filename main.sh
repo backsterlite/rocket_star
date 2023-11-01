@@ -2,8 +2,8 @@
 set -e
 echo "Start build docker image"
 docker build \
-        -t "rocket-star:$(git rev-parse HEAD)" \
-        -t "rocket-star:latest" \
+        -t "backster/rocket-star:$(git rev-parse HEAD)" \
+        -t "backster/rocket-star:latest" \
         --build-arg USER_LOGIN="backster" \
         --build-arg PYTHON_VERSION="3.10.13" .
 
