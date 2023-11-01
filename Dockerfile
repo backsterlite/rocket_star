@@ -14,8 +14,7 @@ RUN apt-get update \
     && apt-get install -y htop \
     make \
     git \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean 
 
 RUN python -m pip install Flask
 
