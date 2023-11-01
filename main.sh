@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 echo "Start build docker image"
+IMAGE_NAME="backster/rocket-star"
+
 docker build \
-        -t "backster/rocket-star:$(git rev-parse HEAD)" \
-        -t "backster/rocket-star:latest" \
+        -t "$IMAGE_NAME:$(git rev-parse HEAD)" \
+        -t "$IMAGE_NAME:latest" \
         --build-arg USER_LOGIN="backster" \
         --build-arg PYTHON_VERSION="3.10.13" .
 
@@ -15,8 +17,8 @@ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 echo "Start pushing image"
 
-docker push "rocket-star:latest" \
-&& docker push "rocket-star:$(git rev-parse HEAD)" \
+docker push "$IMAGE_NAME:latest" \
+&& docker push "$IMAGE_NAME:$(git rev-parse HEAD)" \
 && echo "Image pushed. OK" || echo "Images not pushed"; exit 1
 
 
