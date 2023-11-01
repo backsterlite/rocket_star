@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7
+    resource_class: small
     steps:
       - checkout
       - setup_remote_docker:
@@ -18,8 +19,11 @@ jobs:
   test:
     docker:
       - image: circleci/python:3.7
+    resource_class: small
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.18
       - run:
           name: This is unit tests
           command: |

@@ -19,7 +19,7 @@ echo "Start pushing image"
 
 docker push "$IMAGE_NAME:latest" \
 && docker push "$IMAGE_NAME:$(git rev-parse HEAD)" \
-&& echo "Image pushed. OK" || echo "Images not pushed"; exit 1
+&& echo "Image pushed. OK" || echo "Images not pushed"
 
 
 # curl -s "https://hub.docker.com/v2/repositories/backster/rocket-star/latest/" | jq '.results[] | .name + ": " + (.full_size|tostring) + " bytes"'
