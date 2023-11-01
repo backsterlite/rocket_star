@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+# set -e
 echo "Start build docker image"
 IMAGE_NAME="backster/rocket-star"
 
