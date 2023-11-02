@@ -95,3 +95,9 @@ docker push "$IMAGE_NAME:latest" \
 
 ## main.py
     File for create simple web server and page with standart "Hello World"
+
+## Configure circleci pipeline with project
+
+1. Login in circleci with github account
+2. Setup need repository
+3. Add login and password from docker hub registry to circleci ENV
