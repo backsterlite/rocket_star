@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e
+set -e
 echo "Start build docker image"
 IMAGE_NAME="backster/rocket-star"
 
@@ -19,7 +19,7 @@ echo "Start pushing image"
 
 docker push "$IMAGE_NAME:latest" \
 && docker push "$IMAGE_NAME:$(git rev-parse HEAD)" \
-&& echo "Image pushed. OK" || echo "Images not pushed"
+&& echo "Image pushed. OK" || exit 1
 
 
 # curl -s "https://hub.docker.com/v2/repositories/backster/rocket-star/latest/" | jq '.results[] | .name + ": " + (.full_size|tostring) + " bytes"'
